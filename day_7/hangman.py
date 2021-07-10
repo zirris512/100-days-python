@@ -1,4 +1,6 @@
 from random import choice
+from os import system
+
 from hangman_art import stages, logo
 from hangman_words import word_list
 
@@ -11,6 +13,8 @@ guesses = []
 print(f"{logo}\n")
 while not end_of_game:
     guess = input("Guess a letter: ").lower()
+
+    system("clear")
 
     if guess in guesses or guess in display:
         print("You've already used that letter!")
