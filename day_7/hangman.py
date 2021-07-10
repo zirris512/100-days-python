@@ -1,8 +1,16 @@
 from random import choice
-from os import system
+from os import system, name
 
 from hangman_art import stages, logo
 from hangman_words import word_list
+
+
+def clear():
+    if name == "nt":
+        system("cls")
+    else:
+        system("clear")
+
 
 chosen_word = choice(word_list)
 display = ["_" for _ in chosen_word]
@@ -10,11 +18,12 @@ end_of_game = False
 lives = len(stages) - 1
 guesses = []
 
+
 print(f"{logo}\n")
 while not end_of_game:
     guess = input("Guess a letter: ").lower()
 
-    system("clear")
+    clear()
 
     if guess in guesses or guess in display:
         print("You've already used that letter!")
