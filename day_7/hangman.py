@@ -46,3 +46,4 @@ while not end_of_game:
     elif lives == 0:
         end_of_game = True
         print("You lost!")
+        print(f"\nThe word was: {chosen_word}")
