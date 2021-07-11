@@ -20,6 +20,7 @@ guesses = []
 
 
 print(f"{logo}\n")
+print(" ".join(display))
 while not end_of_game:
     guess = input("Guess a letter: ").lower()
 
