@@ -25,13 +25,23 @@ def clear():
         system("clear")
 
 
+def format_data(account):
+    return f"{account['name']}, a {account['description']}, from {account['country']}."
+
+
+def check_answer(guess, first_count, second_count):
+    if first_count > second_count:
+        return guess == "a"
+    return guess == "b"
+
+
 user_score = 0
 game_over = False
+first_item = choice(data)
 
 print(logo)
 
 while not game_over:
-    first_item = choice(data)
     second_item = choice(data)
 
     while first_item["name"] == second_item["name"]:
@@ -39,25 +49,19 @@ while not game_over:
 
     first_item_followers = first_item["follower_count"]
     second_item_followers = second_item["follower_count"]
-    correct_answer = "a" if first_item_followers > second_item_followers else "b"
 
-    print("correct answer...", correct_answer)
-
-    print(
-        f"Compare A: {first_item['name']}, a {first_item['description']}, from {first_item['country']}."
-    )
+    print(f"Compare A: {format_data(first_item)}")
     print(f"{vs}")
-    print(
-        f"Against B: {second_item['name']}, a {second_item['description']}, from {second_item['country']}."
-    )
+    print(f"Against B: {format_data(second_item)}")
 
     user_guess = input("Who has more followers? Type 'A' or 'B': ").lower()
 
     clear()
     print(logo)
 
-    if user_guess == correct_answer:
+    if check_answer(user_guess, first_item_followers, second_item_followers):
         user_score += 1
+        first_item = second_item
         print(f"Correct! Current score: {user_score}")
     else:
         game_over = True
