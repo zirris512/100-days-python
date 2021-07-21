@@ -67,5 +67,3 @@ while not turn_off:
                 print(f"Sorry, there is not enough {item}")
     else:
         print("Sorry, that is an invalid option.")
-
-
