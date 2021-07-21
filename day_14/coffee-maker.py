@@ -30,9 +30,9 @@ def add_money():
 
 def check_resources(current, needed):
     shortage_list = []
-    for ingredient in needed:
-        if current[ingredient] < needed[ingredient]:
-            shortage_list.append(ingredient)
+    for item_ingredient in needed:
+        if current[item_ingredient] < needed[item_ingredient]:
+            shortage_list.append(item_ingredient)
     return shortage_list
 
 
