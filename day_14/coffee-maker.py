@@ -21,22 +21,19 @@ def show_report():
 
 
 def add_money():
-    quarters = float(input("How many quarters: ")) * 0.25
-    dimes = float(input("How many dimes: ")) * 0.1
-    nickles = float(input("How many nickles: ")) * 0.05
-    pennies = float(input("How many pennies: ")) * 0.01
-    return quarters + dimes + nickles + pennies
+    total_coins = int(input("How many quarters: ")) * 0.25
+    total_coins += int(input("How many dimes: ")) * 0.1
+    total_coins += int(input("How many nickles: ")) * 0.05
+    total_coins += int(input("How many pennies: ")) * 0.01
+    return total_coins
 
 
 def check_resources(current, needed):
-    is_not_enough = []
-    if current["water"] < needed["water"]:
-        is_not_enough.append("water")
-    if current["milk"] < needed["milk"]:
-        is_not_enough.append("milk")
-    if current["coffee"] < needed["coffee"]:
-        is_not_enough.append("coffee")
-    return is_not_enough
+    shortage_list = []
+    for ingredient in needed:
+        if current[ingredient] < needed[ingredient]:
+            shortage_list.append(ingredient)
+    return shortage_list
 
 
 while not turn_off:
@@ -58,9 +55,8 @@ while not turn_off:
             if total_money > chosen_coffee_cost:
                 refunded_amount = total_money - chosen_coffee_cost
                 total_in_machine += chosen_coffee_cost
-                resources["water"] -= chosen_coffee_ingredients["water"]
-                resources["milk"] -= chosen_coffee_ingredients["milk"]
-                resources["coffee"] -= chosen_coffee_ingredients["coffee"]
+                for ingredient in chosen_coffee_ingredients:
+                    resources[ingredient] -= chosen_coffee_ingredients[ingredient]
 
                 print(f"Here is ${refunded_amount:.2f} in change.")
                 print(f"Enjoy your {user_choice}")
