@@ -11,29 +11,23 @@ def choose_color():
     return choice(rgb_colors)
 
 
-def move_to_start():
+def initialize_turtle():
+    dot.speed(8)
     dot.hideturtle()
     dot.penup()
     dot.setpos(-250, -250)
-    dot.pendown()
-    dot.showturtle()
 
 
 dot = Turtle()
 screen = Screen()
 screen.colormode(255)
-dot.speed(8)
 
-move_to_start()
+initialize_turtle()
 
 for _ in range(10):
     for _ in range(10):
-        dot.pendown()
         dot.dot(20, choose_color())
-        dot.penup()
         dot.forward(50)
     dot.setpos(-250, dot.ycor() + 50)
-
-dot.hideturtle()
 
 screen.exitonclick()
