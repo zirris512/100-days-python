@@ -6,7 +6,6 @@ from twilio.http.http_client import TwilioHttpClient
 
 load_dotenv()
 
-
 API_KEY = os.getenv("API_KEY")
 MY_LAT = os.getenv("MY_LAT")
 MY_LONG = os.getenv("MY_LONG")
