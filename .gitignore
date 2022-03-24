@@ -1,5 +1,5 @@
 practice/
 .idea
-.env
+*.env
 .cache
 */__pycache__/
